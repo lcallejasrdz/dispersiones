@@ -1,11 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DirectController;
 use App\Http\Controllers\PyrollController;
 use App\Http\Controllers\SimpleController;
 use App\Http\Controllers\BorrowController;
+
+use App\Http\Controllers\FollowingController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +47,7 @@ Route::group(array('prefix' => $route), function () use ($route, $controller) {
 });
 
 // New Movement
-Route::group(array('prefix' => 'new-movement'), function () use ($route, $controller) {
+Route::group(array('prefix' => 'new-movement'), function () {
     // Direct Movement
     Route::get('direct', [DirectController::class, 'create'])->name('direct.create');
     Route::post('direct', [DirectController::class, 'store'])->name('direct.store');
@@ -55,6 +60,51 @@ Route::group(array('prefix' => 'new-movement'), function () use ($route, $contro
     // Borrow Movement
     Route::get('borrow', [BorrowController::class, 'create'])->name('borrow.create');
     Route::post('borrow', [BorrowController::class, 'store'])->name('borrow.store');
+});
+
+// Following
+$route = 'following';
+$controller = FollowingController::class;
+Route::group(array('prefix' => $route), function () use ($route, $controller) {
+    Route::get('/', [$controller, 'index'])->name($route);
+    // Dispersions Movement
+    Route::get('direct/{id}', [$controller, 'direct_following_create'])->name($route.'.direct_following_create');
+    Route::post('direct/{id}', [$controller, 'direct_following_store'])->name($route.'.direct_following_store');
+    Route::get('payroll/{id}', [$controller, 'payroll_following_create'])->name($route.'.payroll_following_create');
+    Route::post('payroll/{id}', [$controller, 'payroll_following_store'])->name($route.'.payroll_following_store');
+    Route::get('simple/{id}', [$controller, 'simple_following_create'])->name($route.'.simple_following_create');
+    Route::post('simple/{id}', [$controller, 'simple_following_store'])->name($route.'.simple_following_store');
+    // Confirm Entries
+    Route::get('confirm_entry/{id}', [$controller, 'confirm_entry'])->name($route.'.confirm_entry');
+    // Confirm Dispersions
+    Route::get('confirm_dispersion/{id}', [$controller, 'confirm_dispersion'])->name($route.'.confirm_dispersion');
+    // Finish Movement
+    Route::get('direct_finish/{id}', [$controller, 'direct_finishing_create'])->name($route.'.direct_finishing_create');
+    Route::post('direct_finish/{id}', [$controller, 'direct_finishing_store'])->name($route.'.direct_finishing_store');
+    Route::get('simple_finish/{id}', [$controller, 'simple_finishing_create'])->name($route.'.simple_finishing_create');
+    Route::post('simple_finish/{id}', [$controller, 'simple_finishing_store'])->name($route.'.simple_finishing_store');
+    Route::get('borrow_finish/{id}', [$controller, 'borrow_finishing_create'])->name($route.'.borrow_finishing_create');
+    Route::post('borrow_finish/{id}', [$controller, 'borrow_finishing_store'])->name($route.'.borrow_finishing_store');
+});
+
+// Invoices
+$route = 'invoice';
+$controller = InvoiceController::class;
+Route::group(array('prefix' => $route), function () use ($route, $controller) {
+    // Accounting
+    Route::get('accounting/{year}/{month}', [$controller, 'accounting'])->name($route.'.accounting');
+    Route::post('accounting/store', [$controller, 'accounting_store'])->name($route.'.accounting_store');
+    // Dispersions
+    Route::get('dispersions/{year}/{month}', [$controller, 'dispersions'])->name($route.'.dispersions');
+    Route::post('dispersions/store', [$controller, 'dispersions_store'])->name($route.'.dispersions_store');
+});
+
+// Lists
+$route = 'list';
+$controller = ListController::class;
+Route::group(array('prefix' => $route), function () use ($route, $controller) {
+    // Accounting
+    Route::get('finals/{year}/{month}', [$controller, 'finals'])->name($route.'.finals');
 });
 
 

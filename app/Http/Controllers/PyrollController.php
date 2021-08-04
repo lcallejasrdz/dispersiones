@@ -7,7 +7,6 @@ use App\Http\Requests\PayrollMovement as MasterRequest;
 use App\Models\Company;
 use App\Models\Movement;
 use App\Models\MovementEntry;
-use App\Models\MovementOutput;
 use Redirect;
 
 class PyrollController extends Controller
@@ -21,16 +20,6 @@ class PyrollController extends Controller
 
         // Final compact
         $this->compact = ['active'];
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
     }
 
     /**
@@ -86,50 +75,5 @@ class PyrollController extends Controller
         }
 
         return Redirect::route($this->active.'.create')->with('success', trans('module_'.$this->active.'.crud.create.success'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

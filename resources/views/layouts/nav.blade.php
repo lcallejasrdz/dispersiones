@@ -25,7 +25,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li class="menu-label">Administrador</li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
@@ -42,7 +41,57 @@
                         </li>
                     </ul>
                 </li>
+                <li class="menu-label">Movimientos</li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class='bx bx-cart'></i>
+                        </div>
+                        <div class="menu-title">Nuevo</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ URL::route('direct.create') }}"><i class="bx bx-right-arrow-alt"></i>Directo</a>
+                        </li>
+                        <li> <a href="{{ URL::route('payroll.create') }}"><i class="bx bx-right-arrow-alt"></i>Nominas</a>
+                        </li>
+                        <li> <a href="{{ URL::route('simple.create') }}"><i class="bx bx-right-arrow-alt"></i>Simple</a>
+                        </li>
+                        <li> <a href="{{ URL::route('borrow.create') }}"><i class="bx bx-right-arrow-alt"></i>Préstamo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ URL::route('following') }}">
+                        <div class="parent-icon"><i class='bx bx-cookie'></i>
+                        </div>
+                        <div class="menu-title">Seguimiento</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class='bx bx-cart'></i>
+                        </div>
+                        <div class="menu-title">Facturas</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ URL::route('invoice.accounting', ['year' => date('Y'), 'month' => date('n')]) }}"><i class="bx bx-right-arrow-alt"></i>Contabilidad</a>
+                        </li>
+                        <li> <a href="{{ URL::route('invoice.dispersions', ['year' => date('Y'), 'month' => date('n')]) }}"><i class="bx bx-right-arrow-alt"></i>Dispersiones</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class='bx bx-cart'></i>
+                        </div>
+                        <div class="menu-title">Listados</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ URL::route('list.finals', ['year' => date('Y'), 'month' => date('n')]) }}"><i class="bx bx-right-arrow-alt"></i>Finales</a>
+                        </li>
+                    </ul>
+                </li>
 
+                <li class="menu-label">Other</li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon"><i class="bx bx-category"></i>
@@ -67,33 +116,7 @@
                     </ul>
                 </li>
 
-                <li class="menu-label">Movimientos</li>
-                <li>
-                    <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class='bx bx-cart'></i>
-                        </div>
-                        <div class="menu-title">Nuevo</div>
-                    </a>
-                    <ul>
-                        <li> <a href="{{ URL::route('direct.create') }}"><i class="bx bx-right-arrow-alt"></i>Directo</a>
-                        </li>
-                        <li> <a href="{{ URL::route('payroll.create') }}"><i class="bx bx-right-arrow-alt"></i>Nominas</a>
-                        </li>
-                        <li> <a href="{{ URL::route('simple.create') }}"><i class="bx bx-right-arrow-alt"></i>Simple</a>
-                        </li>
-                        <li> <a href="{{ URL::route('borrow.create') }}"><i class="bx bx-right-arrow-alt"></i>Préstamo</a>
-                        </li>
-                    </ul>
-                </li>
-
                 <li class="menu-label">UI Elements</li>
-                <li>
-                    <a href="{{ url('widgets') }}">
-                        <div class="parent-icon"><i class='bx bx-cookie'></i>
-                        </div>
-                        <div class="menu-title">Widgets</div>
-                    </a>
-                </li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon"><i class='bx bx-cart'></i>

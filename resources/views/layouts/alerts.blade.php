@@ -80,8 +80,8 @@
             <div class="font-35 text-dark"><i class='bx bx-info-circle'></i>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0 text-dark">Warning Alerts</h6>
-                <div class="text-dark">A simple Warning alert—check it out!</div>
+                <h6 class="mb-0 text-dark">Alerta</h6>
+                <div class="text-dark">{{ session('warning') }}</div>
             </div>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
